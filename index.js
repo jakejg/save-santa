@@ -1,5 +1,9 @@
 console.log('🎄 Save Santa!');
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 let branch = 1; // Starting at the bottom of the tree
 const totalBranches = 10;
 
@@ -13,13 +17,17 @@ function randomEvent() {
   return events[Math.floor(Math.random() * events.length)];
 }
 
+async function run(){
 while (branch < totalBranches) {
   console.log(`🌳 Climbing to branch ${branch}...`);
 
   const event = randomEvent();
   console.log(event.message);
 
+  await sleep(1000);
+
   branch = +event.move; 
+
   if (branch == 0) {
     // What happens if you fall?
     console.log('You fell! 🎅 Santa is starting to get cold....');
@@ -31,3 +39,6 @@ if (branch >= totalBranches) {
 } else {
   console.log('Game over.');
 }
+}
+
+run();
