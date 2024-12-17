@@ -14,13 +14,12 @@ function randomEvent() {
 }
 
 while (branch < totalBranches) {
-  // Hmm, does this work correctly?
   console.log(`🌳 Climbing to branch ${branch}...`);
 
   const event = randomEvent();
   console.log(event.message);
 
-  branch = +event.move; // Is this how we update branches?
+  branch = +event.move; 
   if (branch == 0) {
     // What happens if you fall?
     console.log('You fell! 🎅 Santa is starting to get cold....');
